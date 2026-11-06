@@ -1,0 +1,89 @@
+#include <iostream>
+using namespace std;
+
+// Задание 1
+class Stack {
+private:
+    int arr[10];
+    int top;
+
+public:
+    Stack() {
+        top = -1;
+    }
+
+    void push(int value) {
+        if (top < 9)
+            arr[++top] = value;
+        else
+            cout << "Стек переполнен!" << endl;
+    }
+
+    int pop() {
+        if (isEmpty())
+            return -1;
+
+        return arr[top--];
+    }
+
+    bool isEmpty() {
+        return top == -1;
+    }
+};
+
+// Задание 2
+void dynamicArray() {
+    int N;
+
+    cout << "Введите N: ";
+    cin >> N;
+
+    if (N <= 0) return;
+
+    double* arr = new double[N];
+
+    for (int i = 0; i < N; i++)
+        arr[i] = i * i;
+
+    for (int i = 0; i < N; i++)
+        cout << arr[i] << " ";
+
+    cout << endl;
+
+    delete[] arr;
+}
+
+// Задание 3
+namespace Geometry {
+    const double PI = 3.14159;
+
+    double circleArea(double radius) {
+        return PI * radius * radius;
+    }
+}
+
+int main() {
+    // Проверка Stack
+    Stack s;
+
+    s.push(10);
+    s.push(20);
+    s.push(30);
+
+    cout << "Удаленный элемент: " << s.pop() << endl;
+    cout << "Стек пустой: " << (s.isEmpty() ? "Да" : "Нет") << endl;
+
+    // Динамический массив
+    dynamicArray();
+
+    // Площадь круга
+    double radius;
+
+    cout << "Введите радиус: ";
+    cin >> radius;
+
+    cout << "Площадь круга: "
+         << Geometry::circleArea(radius) << endl;
+
+    return 0;
+}
